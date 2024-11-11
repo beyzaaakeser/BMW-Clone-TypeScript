@@ -7,10 +7,14 @@ const options = {
   },
 };
 
-export const fetchCars = async (): Promise<CarType[]> => {
+type Parameters = {
+  limit:number
+}
+
+export const fetchCars = async ({limit}:Parameters): Promise<CarType[]> => {
   try {
     const url =
-      'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=BMW&model=m4';
+      `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=BMW&limit=${limit}`;
 
     const res = await fetch(url, options);
     const data = await res.json();

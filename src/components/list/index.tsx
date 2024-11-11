@@ -3,19 +3,23 @@ import { fetchCars } from '../../utils/fetchCars';
 import { CarType } from '../../types';
 import Warning from './Warning';
 import Card from './Card';
+import Button from '../button';
 
 const List = () => {
   const [cars, setCars] = useState<CarType[] | null>(null);
   const [isError, setIsError] = useState<boolean>(false);
+  const [limit, setLimit] = useState<number>(5);
 
   useEffect(() => {
-    fetchCars()
+    fetchCars({limit})
       .then((data) => setCars(data))
       .catch(() => setIsError(true));
-  }, []);
+  }, [limit]);
+
+ 
 
   return (
-    <div className='padding-x max-width'>
+    <div className="padding-x max-width">
       {!cars ? (
         <Warning>Loading...</Warning>
       ) : isError ? (
@@ -29,6 +33,15 @@ const List = () => {
               {cars.map((car, i) => (
                 <Card car={car} key={i} />
               ))}
+            </div>
+
+            <div className="w-full flex-center py-10">
+              {limit < 31 && (
+                <Button
+                  title="Explore More"
+                  handleClick={() => setLimit(limit + 5)}
+                />
+              )}
             </div>
           </section>
         )

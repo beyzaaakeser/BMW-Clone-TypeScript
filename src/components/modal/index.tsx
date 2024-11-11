@@ -9,7 +9,7 @@ interface Props {
 }
 
 const Modal = ({ car, isOpen, close }: Props) => {
-  console.log(car);
+
   return (
     <AnimatePresence>
      { isOpen && (
@@ -33,8 +33,8 @@ const Modal = ({ car, isOpen, close }: Props) => {
           </button>
           <Images car={car} />
 
-          {Object.entries(car).map(([key, value]) => (
-            <p className="flex justify-between capitalize">
+          {Object.entries(car).map(([key, value], index) => (
+            <p key={index} className="flex justify-between capitalize">
               <span>{key.split('_').join(' ')}</span>
               <span className="font-semibold">{value}</span>
             </p>
