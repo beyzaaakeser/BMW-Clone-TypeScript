@@ -5,8 +5,8 @@ import { useSearchParams } from 'react-router-dom';
 
 const SearchBar = () => {
   const [params, setParams] = useSearchParams();
-  const [make, setMake] = useState<string>('');
-  const [model, setModel] = useState<string>('');
+  const [make, setMake] = useState<string>(params.get('make') ||"");
+  const [model, setModel] = useState<string>(params.get('make') ||"");
   const options = useMemo(
     () => makes.map((make) => ({ value: make, label: make })),
     []
@@ -15,7 +15,12 @@ const SearchBar = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setParams({ make: make.toLowerCase(), model: model.toLowerCase() });
+    setParams({ make, model });
+  };
+
+  const selected = {
+    label: params.get('make') || '',
+    value: params.get('make') || '',
   };
 
   return (
@@ -26,6 +31,7 @@ const SearchBar = () => {
           className="w-full text-black"
           options={options}
           placeholder="Choose a Brand..."
+          defaultValue={selected}
         />
 
         <button className="ml-3 sm:hidden">
@@ -39,6 +45,7 @@ const SearchBar = () => {
           className="searchbar__input rounded text-black"
           placeholder="Exp: X5"
           onChange={(e) => setModel(e.target.value)}
+          defaultValue={params.get('model') || ''}
         />
         <button className="ml-3">
           <img src="/search.svg" className="size-10" />
