@@ -4,19 +4,28 @@ import { CarType } from '../../types';
 import Warning from './Warning';
 import Card from './Card';
 import Button from '../button';
+import { useSearchParams } from 'react-router-dom';
 
 const List = () => {
   const [cars, setCars] = useState<CarType[] | null>(null);
   const [isError, setIsError] = useState<boolean>(false);
   const [limit, setLimit] = useState<number>(5);
+  
+  const [params] = useSearchParams();
+  
+  const paramsObject = Object.fromEntries(params.entries());
+
+  console.log(paramsObject);
 
   useEffect(() => {
-    fetchCars({limit})
+    setLimit(5);
+  }, [params.get('make'), params.get('model')]);
+
+  useEffect(() => {
+    fetchCars({ limit, ...paramsObject })
       .then((data) => setCars(data))
       .catch(() => setIsError(true));
-  }, [limit]);
-
- 
+  }, [limit, params]);
 
   return (
     <div className="padding-x max-width">
