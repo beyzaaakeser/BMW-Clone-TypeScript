@@ -9,6 +9,7 @@ const Images = ({ car }: { car: CarType }) => {
         <img
           src={generateImage(car)}
           className="h-full mx-auto object-contain"
+          alt={car.make + car.model + " facing right"}
         />
       </div>
 
@@ -17,6 +18,7 @@ const Images = ({ car }: { car: CarType }) => {
           <img
             src={generateImage(car, '29')}
             className="mx-auto object-contain min-w-[146px]"
+            alt={car.make + car.model + " facing to screen"}
           />
         </div>
 
@@ -24,6 +26,7 @@ const Images = ({ car }: { car: CarType }) => {
           <img
             src={generateImage(car, '33')}
             className="mx-auto object-contain min-w-[146px]"
+            alt={car.make + car.model + " facing from top"}
           />
         </div>
 
@@ -31,6 +34,7 @@ const Images = ({ car }: { car: CarType }) => {
           <img
             src={generateImage(car, '13')}
             className="mx-auto object-contain min-w-[146px]"
+            alt={car.make + car.model + " facing from behind"}
           />
         </div>
       </div>

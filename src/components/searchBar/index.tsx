@@ -5,8 +5,8 @@ import { useSearchParams } from 'react-router-dom';
 
 const SearchBar = () => {
   const [params, setParams] = useSearchParams();
-  const [make, setMake] = useState<string>(params.get('make') ||"");
-  const [model, setModel] = useState<string>(params.get('make') ||"");
+  const [make, setMake] = useState<string>(params.get('make') || '');
+  const [model, setModel] = useState<string>(params.get('make') || '');
   const options = useMemo(
     () => makes.map((make) => ({ value: make, label: make })),
     []
@@ -34,21 +34,27 @@ const SearchBar = () => {
           defaultValue={selected}
         />
 
-        <button className="ml-3 sm:hidden">
-          <img src="/search.svg" className="size-10" />
+        <button className="ml-3 sm:hidden" aria-label="search">
+          <img src="/search.svg" className="size-10" alt="magnifying glass" />
         </button>
       </div>
       <div className="searchbar__item">
-        <img src="/model-icon.png" width={25} className="absolute ml-4" />
+        <label htmlFor="model" className="absolute ml-4">
+          <img src="/model-icon.png" width={25} alt="car from front" />
+        </label>
+
         <input
+          id="model"
+          title="search for specific model"
           type="text"
           className="searchbar__input rounded text-black"
           placeholder="Exp: X5"
           onChange={(e) => setModel(e.target.value)}
           defaultValue={params.get('model') || ''}
         />
-        <button className="ml-3">
-          <img src="/search.svg" className="size-10" />
+
+        <button className="ml-3" aria-label="search">
+          <img src="/search.svg" className="size-10" alt="magnifying glass" />
         </button>
       </div>
     </form>
