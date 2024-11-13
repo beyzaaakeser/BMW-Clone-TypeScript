@@ -2,8 +2,8 @@ import { CarType } from './../types';
 
 const options = {
   headers: {
-    'x-rapidapi-key': '93abac49f1mshf96bc7f455d8f52p1bfff8jsn714e0a7240e5',
-    'x-rapidapi-host': 'cars-by-api-ninjas.p.rapidapi.com',
+    'x-rapidapi-key': import.meta.env.VITE_RAPIDAPI_KEY,
+    'x-rapidapi-host': import.meta.env.VITE_RAPIDAPI_HOST,
   },
 };
 
