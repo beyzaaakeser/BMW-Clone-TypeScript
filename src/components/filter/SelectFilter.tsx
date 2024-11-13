@@ -15,7 +15,7 @@ const SelectFilter = () => {
         Fuel Type:
       </label>
       <ReactSelect
-        id="fuel"
+        inputId="fuel"
         options={fuels}
         className="text-black min-w-36 rounded-r"
         defaultValue={selected}

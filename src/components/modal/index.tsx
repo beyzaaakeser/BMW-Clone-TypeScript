@@ -35,7 +35,7 @@ const Modal = ({ car, isOpen, close }: Props) => {
           <Images car={car} />
 
           {Object.entries(car).map(([key, value], index) => (
-            <p key={index} className="flex justify-between capitalize">
+            <p key={index} className="flex justify-between capitalize border-b">
               <span>{key.split('_').join(' ')}</span>
               <span className="font-semibold">{value}</span>
             </p>

@@ -32,7 +32,7 @@ const SearchBar = () => {
         <div className="w-full flex flex-col">
           <label htmlFor="brand">Brand</label>
           <ReactSelect
-            id="brand"
+            inputId="brand"
             onChange={(e) => setMake(e!.value)}
             className="w-full text-black"
             options={options}

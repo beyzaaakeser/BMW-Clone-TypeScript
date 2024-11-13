@@ -33,11 +33,11 @@ const Card = ({ car }: Props) => {
       </h2>
 
       <div className="flex mt-6 text-[19px]">
-        <span className="font-semibold">₺</span>
-        <span className="text-[32px]">
-          {Math.round(Math.random() * 6000) + 1500}
+        <span className="font-semibold text-blue-700">$</span>
+        <span className="text-[32px] text-amber-600 font-semibold">
+          {Math.round(Math.random() * 2000) + 1500}
         </span>
-        <span className="font-semibold self-end">/day</span>
+        <span className="font-semibold self-end text-blue-700">/day</span>
       </div>
 
       <div className="w-full">
