@@ -15,7 +15,6 @@ const List = () => {
   
   const paramsObject = Object.fromEntries(params.entries());
 
-  console.log(paramsObject);
 
   useEffect(() => {
     setLimit(5);
